@@ -30,6 +30,7 @@ const cuantoEnDiasActual = document.querySelector("#actual-dias");
 const cuantoEnDiasLlegar = document.querySelector("#dias");
 const cuantoEnDiasUSDT = document.querySelector("#usdt-en-dias");
 const cuantoEnDiasSpanDias = document.querySelector("#usdt-cuantos-dias");
+const fechaFinalDias = document.querySelector("#fecha-final-dias");
 
 cuantoEnDiasForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -40,5 +41,8 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
         cuantoEnDiasSpanDias.innerText = cuantoEnDiasLlegar.value;
         cuantoEnDiasUSDT.classList.add("verde");
         cuantoEnDiasSpanDias.classList.add("verde");
+        const fecha = new Date(new Date().setDate(new Date().getDate() + Number(cuantoEnDiasLlegar.value))).toLocaleDateString('es-ES');
+        fechaFinalDias.innerText = fecha;
+        fechaFinalDias.classList.add("verde");
     }
 })
