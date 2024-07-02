@@ -68,7 +68,7 @@ input[type="submit"] {
 }
 
 .verde {
-    color: greenyellow;
+    color: light-dark(green, greenyellow);
 }
 
 @media (max-width: 750px) {
