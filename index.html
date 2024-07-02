@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Rainbow 🌈</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">k
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Calculadora Rainbow 🌈</h1>
+
+        <section>
+            <h2>Cuánto voy a demorar en llegar a X monto:</h2>
+            <form id="cuanto-demoro">
+                <label>
+                    <p>Ingresá cuánto tenés ahora en Rainbow:</p>
+                    <input id="actual" type="text" placeholder="Monto actual">
+                </label>
+                <label>
+                    <p>Ingresá a cuánto querés llegar:</p>
+                    <input id="llegar" type="text" placeholder="Quiero tener">
+                </label>
+                <label>
+                    <input type="submit" value="Calcular">
+                </label>
+            </form>
+            <div>
+                <p class="vas-a-llegar">Vas a llegar en: <span id="dias-totales">X</span> días.</p>
+                <p>Esto va a ser el: <span id="fecha-final">X</span></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Cuánto voy a tener en X días:</h2>
+            <form id="cuanto-en-dias">
+                <label>
+                    <p>Ingresá cuánto tenés ahora en Rainbow:</p>
+                    <input id="actual-dias" type="text" placeholder="Monto actual">
+                </label>
+                <label>
+                    <p>Ingresá cuántos días querés operar:</p>
+                    <input id="dias" type="text" placeholder="Días a operar">
+                </label>
+                <label>
+                    <input type="submit" value="Calcular">
+                </label>
+            </form>
+            <div>
+                <p class="vas-a-llegar">En <span id="usdt-cuantos-dias">X</span> días vas a tener: <span id="usdt-en-dias">X</span> USDT.</p>
+            </div>
+        </section>
+
+        
+        <p class="aclaraciones">* Todos los cálculos son aproximados y pueden variar.</p>
+        <p class="aclaraciones">* Ningún cálculo es exacto, porque las ganancias son variables.</p>
+        <p class="aclaraciones">* Todo se calcula teniendo en cuenta que se opera de domingos a sábados inclusive, sin falta.</p>
+        <p class="aclaraciones">* Esto no es una recomendación de inversión ni nada por el estilo, son solo cálculos.</p>
+    </div>
+    <div class="container footer">
+        <p>App desarrollada por <a href="https://carpicoder.com" target="_blank">Carpi Coder</a>.</p>
+        <a href="https://carpicoder.com/donaciones" target="_blank">Donaciones</a>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
