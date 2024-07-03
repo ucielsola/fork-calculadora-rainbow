@@ -68,7 +68,7 @@ input[type="submit"] {
 }
 
 .verde {
-    color: light-dark(green, greenyellow);
+    color: light-dark(#06b700, greenyellow);
 }
 
 @media (max-width: 750px) {
@@ -98,4 +98,9 @@ input[type="submit"] {
 
 .footer {
     margin-top: 2rem;
+}
+
+p span.small {
+    font-size: .8em;
+    color: gray;
 }
