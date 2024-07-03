@@ -36,5 +36,3 @@ Este es un proyecto creado por ocio para calcular la rentabilidad de inversión 
 ## Contacto
 
 Para cualquier pregunta o sugerencia, comunicate a hola@carpicoder.com.
-
-[Visita el proyecto en GitHub](https://github.com/carpicoder/calculadora-rainbow)
