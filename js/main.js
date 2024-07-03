@@ -57,7 +57,7 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
         cuantoEnDiasDias.innerText = diasAOperar;
-        const resultado = Math.floor(tengo * Math.pow(PORCENTAJE, diasAOperar));
+        const resultado = (tengo * Math.pow(PORCENTAJE, diasAOperar)).toFixed(2);
         cuantoEnDiasUSDT.innerText = resultado;
         cuantoEnDiasFecha.innerText = new Date(Date.now() + diasAOperar * 86400000).toLocaleDateString('es-ES');
         cuantoEnDiasRetiro.innerText = (resultado - (resultado * 0.05)).toFixed(2);

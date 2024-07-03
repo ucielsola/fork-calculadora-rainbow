@@ -25,6 +25,7 @@ section {
     margin-top: 2rem;
     padding: 1rem;
     border-radius: .5rem;
+    background-color: light-dark(#ececec, #24242b);
 }
 
 form {
