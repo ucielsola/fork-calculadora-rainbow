@@ -1,4 +1,3 @@
-// Common function for adding result classes
 const agregarClaseVerde = (elements) => {
     elements.forEach(element => element.classList.add("verde"));
 };
@@ -20,12 +19,12 @@ cuantoDemoroForm.addEventListener("submit", (e) => {
     const tengo = Number(cuantoDemoroTengo.value.trim());
     const quieroTener = Number(cuantoDemoroQuieroTener.value.trim());
 
-    if (isNaN(quieroTener) || isNaN(tengo) || tengo === 0 || quieroTener === 0) {
+    if (isNaN(quieroTener) || isNaN(tengo)) {
         alert("Debés ingresar números en ambos campos.");
     } else if (quieroTener <= tengo) {
         alert("El monto actual debe ser menor al monto deseado.");
-    } else if (quieroTener < 0 || tengo < 0) {
-        alert("Los números no pueden ser negativos.");
+    } else if (quieroTener <= 0 || tengo <= 0) {
+        alert("Los números no pueden ser negativos ni cero.");
     } else {
         const resultado = Math.ceil(Math.log(quieroTener / tengo) / Math.log(PORCENTAJE));
         cuantoDemoroDias.innerText = resultado;
@@ -52,10 +51,10 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
     const tengo = Number(cuantoEnDiasTengo.value.trim());
     const diasAOperar = Number(cuantoEnDiasDiasAOperar.value.trim());
 
-    if (isNaN(tengo) || isNaN(diasAOperar) || tengo === 0 || diasAOperar === 0) {
+    if (isNaN(tengo) || isNaN(diasAOperar)) {
         alert("Debés ingresar números en ambos campos.");
-    } else if (tengo < 0 || diasAOperar < 0) {
-        alert("Los números no pueden ser negativos.");
+    } else if (tengo <= 0 || diasAOperar <= 0) {
+        alert("Los números no pueden ser negativos ni cero.");
     } else {
         cuantoEnDiasDias.innerText = diasAOperar;
         const resultado = Math.floor(tengo * Math.pow(PORCENTAJE, diasAOperar));
@@ -82,10 +81,10 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     const tengo = Number(cuantoParaUSDTDiariosTengo.value.trim());
     const quiero = Number(cuantoParaUSDTDiariosQuiero.value.trim());
 
-    if (isNaN(tengo) || tengo === 0) {
-        alert("Debés ingresar un número en el campo.");
-    } else if (tengo < 0) {
-        alert("El número no puede ser negativo.");
+    if (isNaN(tengo) || isNaN(quiero)) {
+        alert("Debés ingresar un número en ambos campos.");
+    } else if (tengo <= 0 || quiero <= 0) {
+        alert("Los números no pueden ser negativos ni cero.");
     } else {
         const resultado = Math.ceil(Math.log(quiero / (tengo * (PORCENTAJE - 1))) / Math.log(PORCENTAJE));
 
