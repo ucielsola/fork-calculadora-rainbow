@@ -99,3 +99,18 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
         }
     }
 });
+
+
+// Teclas de siguiente
+const manejarTeclaSiguiente = (input, nextInput) => {
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            nextInput.focus();
+        }
+    });
+}
+
+manejarTeclaSiguiente(cuantoDemoroTengo, cuantoDemoroQuieroTener);
+manejarTeclaSiguiente(cuantoEnDiasTengo, cuantoEnDiasDiasAOperar);
+manejarTeclaSiguiente(cuantoParaUSDTDiariosTengo, cuantoParaUSDTDiariosQuiero);
