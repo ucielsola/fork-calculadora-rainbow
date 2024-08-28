@@ -3,6 +3,7 @@ const agregarClaseVerde = (elements) => {
 };
 
 const PORCENTAJE = 1.0130285714286;
+const PORCENTAJE_REAL = 1.01518292;
 
 // Form 1: Calcular cuánto voy a demorar en llegar a X USDT
 //! Math.log(quieroTener / tengo) / Math.log(1.01414)
@@ -86,7 +87,7 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     } else if (tengo <= 0 || quiero <= 0) {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
-        const resultado = Math.ceil(Math.log(quiero / (tengo * (PORCENTAJE - 1))) / Math.log(PORCENTAJE));
+        const resultado = Math.ceil(Math.log(quiero / (tengo * (PORCENTAJE_REAL - 1))) / Math.log(PORCENTAJE));
 
         if (resultado <= 0) {
             alert("Ya estás ganando eso o más.");
@@ -97,6 +98,30 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
             
             agregarClaseVerde([cuantoParaUSDTDiariosDias, cuantoParaUSDTDiariosUSDT, cuantoParaUSDTDiariosFecha]);
         }
+    }
+});
+
+
+// Form 4: Calcular cuánto necesito tener para ganar X USDT diarios
+//! quiero / (PORCENTAJE_REAL - 1)
+const cuantoNecesitoParaUSDTDiariosForm = document.querySelector("#cuanto-necesito-para-usdt-diarios");
+const cuantoNecesitoQuieroGanar = document.querySelector("#cuanto-necesito-quiero-ganar");
+const cuantoNecesitoUSDT = document.querySelector("#cuanto-necesito-usdt");
+const cuantoNecesitoTener = document.querySelector("#cuanto-necesito-tener");
+
+cuantoNecesitoParaUSDTDiariosForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const quieroGanar = Number(cuantoNecesitoQuieroGanar.value.trim());
+
+    if (isNaN(quieroGanar) || quieroGanar <= 0) {
+        alert("Debés ingresar un número mayor que cero.");
+    } else {
+        const necesitoTener = (quieroGanar / (PORCENTAJE_REAL - 1)).toFixed(2);
+        cuantoNecesitoUSDT.innerText = quieroGanar;
+        cuantoNecesitoTener.innerText = necesitoTener;
+        
+        agregarClaseVerde([cuantoNecesitoUSDT, cuantoNecesitoTener]);
     }
 });
 
@@ -114,3 +139,4 @@ const manejarTeclaSiguiente = (input, nextInput) => {
 manejarTeclaSiguiente(cuantoDemoroTengo, cuantoDemoroQuieroTener);
 manejarTeclaSiguiente(cuantoEnDiasTengo, cuantoEnDiasDiasAOperar);
 manejarTeclaSiguiente(cuantoParaUSDTDiariosTengo, cuantoParaUSDTDiariosQuiero);
+manejarTeclaSiguiente(cuantoParaUSDTDiariosQuiero, cuantoNecesitoQuieroGanar);

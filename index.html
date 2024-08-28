@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Rainbow 🌈</title>
-    <link rel="stylesheet" href="./css/main.css?v=10.0.0">
+    <link rel="stylesheet" href="./css/main.css?v=11.0.0">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -76,6 +76,22 @@
                 <p>Esto va a ser el: <span id="cuanto-para-usdt-diarios-fecha">X</span>.</p>
             </div>
         </section>
+        <section>
+            <h2>Cuánto necesito tener para ganar X USDT diarios:</h2>
+            <form id="cuanto-necesito-para-usdt-diarios">
+                <label>
+                    <p>Ingresá cuánto querés ganar diariamente:</p>
+                    <input enterkeyhint="go" id="cuanto-necesito-quiero-ganar" type="text" placeholder="Cuánto ganar diariamente">
+                </label>
+                <label>
+                    <input type="submit" value="Calcular">
+                </label>
+            </form>
+            <div>
+                <p>Para ganar <span id="cuanto-necesito-usdt">X</span> USDT diarios, necesitás tener: <span id="cuanto-necesito-tener">X</span> USDT.</p>
+            </div>
+        </section>
+        
 
         
         <p class="aclaraciones">* Todos los cálculos son aproximados y pueden variar, ya que las ganancias son variables.</p>
@@ -91,6 +107,6 @@
         <p>Para consultas, podés escribirme por <a target="_blank" href="https://t.me/carpicoder">Telegram</a>. 📨</p>
     </div>
 
-    <script src="./js/main.js?v=10.0.0"></script>
+    <script src="./js/main.js?v=11.0.0"></script>
 </body>
 </html>
