@@ -6,7 +6,7 @@ const PORCENTAJE = 1.0130285714286;
 const PORCENTAJE_REAL = 1.01518292;
 
 // Form 1: Calcular cuánto voy a demorar en llegar a X USDT
-//! Math.log(quieroTener / tengo) / Math.log(1.01414)
+//! Math.log(quieroTener / tengo) / Math.log(PORCENTAJE)
 const cuantoDemoroForm = document.querySelector("#cuanto-demoro");
 const cuantoDemoroTengo = document.querySelector("#cuanto-demoro-tengo");
 const cuantoDemoroQuieroTener = document.querySelector("#cuanto-demoro-quiero-tener");
@@ -37,7 +37,7 @@ cuantoDemoroForm.addEventListener("submit", (e) => {
 });
 
 // Form 2: Calcular cuántos USDT voy a tener en X días
-//! tengo * Math.pow(1.01414, dias)
+//! tengo * Math.pow(PORCENTAJE, dias)
 const cuantoEnDiasForm = document.querySelector("#cuanto-en-dias");
 const cuantoEnDiasTengo = document.querySelector("#cuanto-en-dias-tengo");
 const cuantoEnDiasDiasAOperar = document.querySelector("#cuanto-en-dias-dias-a-operar");
@@ -68,7 +68,7 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
 });
 
 // Form 3: Calcular cuántos días necesito para ganar X USDT diarios
-//! Math.log(quiero / (tengo * (1.01414 - 1))) / Math.log(1.01414)
+//! Math.log(quiero / (tengo * (PORCENTAJE_REAL - 1))) / Math.log(PORCENTAJE)
 const cuantoParaUSDTDiariosForm = document.querySelector("#cuanto-para-usdt-diarios");
 const cuantoParaUSDTDiariosTengo = document.querySelector("#cuanto-para-usdt-diarios-tengo");
 const cuantoParaUSDTDiariosQuiero = document.querySelector("#cuanto-para-usdt-diarios-quiero");
