@@ -4,6 +4,7 @@ const agregarClaseVerde = (elements) => {
 
 const PORCENTAJE = 1.0130285714286;
 const PORCENTAJE_REAL = 1.01518292;
+const PORCENTAJE_RETIRO = 0.05;
 
 // Form 1: Calcular cuánto voy a demorar en llegar a X USDT
 //! Math.log(quieroTener / tengo) / Math.log(PORCENTAJE)
@@ -30,7 +31,7 @@ cuantoDemoroForm.addEventListener("submit", (e) => {
         const resultado = Math.ceil(Math.log(quieroTener / tengo) / Math.log(PORCENTAJE));
         cuantoDemoroDias.innerText = resultado;
         cuantoDemoroFecha.innerText = new Date(Date.now() + resultado * 86400000).toLocaleDateString('es-ES');
-        cuantoDemoroRetiro.innerText = (quieroTener - (quieroTener * 0.05)).toFixed(2);
+        cuantoDemoroRetiro.innerText = (quieroTener - (quieroTener * PORCENTAJE_RETIRO)).toFixed(2);
         
         agregarClaseVerde([cuantoDemoroDias, cuantoDemoroFecha, cuantoDemoroRetiro]);
     }
@@ -61,7 +62,7 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
         const resultado = (tengo * Math.pow(PORCENTAJE, diasAOperar)).toFixed(2);
         cuantoEnDiasUSDT.innerText = resultado;
         cuantoEnDiasFecha.innerText = new Date(Date.now() + diasAOperar * 86400000).toLocaleDateString('es-ES');
-        cuantoEnDiasRetiro.innerText = (resultado - (resultado * 0.05)).toFixed(2);
+        cuantoEnDiasRetiro.innerText = (resultado - (resultado * PORCENTAJE_RETIRO)).toFixed(2);
 
         agregarClaseVerde([cuantoEnDiasDias, cuantoEnDiasUSDT, cuantoEnDiasFecha, cuantoEnDiasRetiro]);
     }
