@@ -6,14 +6,16 @@ const PORCENTAJE = 1.0157;
 const PORCENTAJE_REAL = 1.0157;
 const PORCENTAJE_RETIRO = 0.05;
 
-// Form 1: Calcular cuánto voy a demorar en llegar a X USDT
-//! Math.log(quieroTener / tengo) / Math.log(PORCENTAJE)
 const cuantoDemoroForm = document.querySelector("#cuanto-demoro");
 const cuantoDemoroTengo = document.querySelector("#cuanto-demoro-tengo");
 const cuantoDemoroQuieroTener = document.querySelector("#cuanto-demoro-quiero-tener");
 const cuantoDemoroDias = document.querySelector("#cuanto-demoro-dias");
 const cuantoDemoroFecha = document.querySelector("#cuanto-demoro-fecha");
 const cuantoDemoroRetiro = document.querySelector("#cuanto-demoro-retiro");
+const cuantoDemoroFechaInicio = document.querySelector("#cuanto-demoro-fecha-inicio");
+
+const today = new Date().toISOString().split('T')[0];
+cuantoDemoroFechaInicio.value = today;
 
 cuantoDemoroForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -29,12 +31,20 @@ cuantoDemoroForm.addEventListener("submit", (e) => {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
         const resultado = Math.ceil(Math.log(quieroTener / tengo) / Math.log(PORCENTAJE));
-        cuantoDemoroDias.innerText = resultado.toLocaleString("es-AR");
-        cuantoDemoroFecha.innerText = new Date(Date.now() + resultado * 86400000).toLocaleDateString('es-ES');
-        cuantoDemoroRetiro.innerText = Number((quieroTener - (quieroTener * PORCENTAJE_RETIRO)).toFixed(2)).toLocaleString("es-AR");
         
-        agregarClaseVerde([cuantoDemoroDias, cuantoDemoroFecha, cuantoDemoroRetiro]);
+        const fechaInicio = new Date(cuantoDemoroFechaInicio.value);
+        const fechaFinal = new Date(fechaInicio.getTime() + resultado * 86400000);
+
+        cuantoDemoroDias.innerText = resultado.toLocaleString("es-AR");
+        cuantoDemoroFecha.innerText = fechaFinal.toLocaleDateString('es-ES');
+        cuantoDemoroRetiro.innerText = Number((quieroTener - (quieroTener * PORCENTAJE_RETIRO)).toFixed(2)).toLocaleString("es-AR");
+
+        agregarClaseVerde([cuantoDemoroDias, cuantoDemoroFecha, cuantoDemoroFechaInicio, cuantoDemoroRetiro]);
     }
+});
+
+cuantoDemoroFechaInicio.addEventListener("change", () => {
+    cuantoDemoroForm.dispatchEvent(new Event('submit', { cancelable: true }));
 });
 
 // Form 2: Calcular cuántos USDT voy a tener en X días
@@ -46,6 +56,9 @@ const cuantoEnDiasDias = document.querySelector("#cuanto-en-dias-dias");
 const cuantoEnDiasUSDT = document.querySelector("#cuanto-en-dias-usdt");
 const cuantoEnDiasFecha = document.querySelector("#cuanto-en-dias-fecha");
 const cuantoEnDiasRetiro = document.querySelector("#cuanto-en-dias-retiro");
+const cuantoEnDiasFechaInicio = document.querySelector("#cuanto-en-dias-fecha-inicio");
+
+cuantoEnDiasFechaInicio.value = today;
 
 cuantoEnDiasForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -59,13 +72,21 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
         cuantoEnDiasDias.innerText = diasAOperar.toLocaleString("es-AR");
+
+        const fechaInicio = new Date(cuantoEnDiasFechaInicio.value);
+        const fechaFinal = new Date(fechaInicio.getTime() + diasAOperar * 86400000);
+
         const resultado = Number((tengo * Math.pow(PORCENTAJE, diasAOperar)).toFixed(2));
         cuantoEnDiasUSDT.innerText = resultado.toLocaleString("es-AR");
-        cuantoEnDiasFecha.innerText = new Date(Date.now() + diasAOperar * 86400000).toLocaleDateString('es-ES');
+        cuantoEnDiasFecha.innerText = fechaFinal.toLocaleDateString('es-ES');
         cuantoEnDiasRetiro.innerText = Number((resultado - (resultado * PORCENTAJE_RETIRO)).toFixed(2)).toLocaleString("es-AR");
 
-        agregarClaseVerde([cuantoEnDiasDias, cuantoEnDiasUSDT, cuantoEnDiasFecha, cuantoEnDiasRetiro]);
+        agregarClaseVerde([cuantoEnDiasDias, cuantoEnDiasUSDT, cuantoEnDiasFecha, cuantoEnDiasFechaInicio, cuantoEnDiasRetiro]);
     }
+});
+
+cuantoEnDiasFechaInicio.addEventListener("change", () => {
+    cuantoEnDiasForm.dispatchEvent(new Event('submit', { cancelable: true }));
 });
 
 // Form 3: Calcular cuántos días necesito para ganar X USDT diarios
@@ -76,6 +97,9 @@ const cuantoParaUSDTDiariosQuiero = document.querySelector("#cuanto-para-usdt-di
 const cuantoParaUSDTDiariosDias = document.querySelector("#cuanto-para-usdt-diarios-dias");
 const cuantoParaUSDTDiariosUSDT = document.querySelector("#cuanto-para-usdt-diarios-usdt");
 const cuantoParaUSDTDiariosFecha = document.querySelector("#cuanto-para-usdt-diarios-fecha");
+const cuantoParaUSDTDiariosFechaInicio = document.querySelector("#cuanto-para-usdt-diarios-fecha-inicio");
+
+cuantoParaUSDTDiariosFechaInicio.value = today;
 
 cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -95,11 +119,19 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
         } else {
             cuantoParaUSDTDiariosDias.innerText = resultado.toLocaleString("es-AR");
             cuantoParaUSDTDiariosUSDT.innerText = quiero.toLocaleString("es-AR");
-            cuantoParaUSDTDiariosFecha.innerText = new Date(Date.now() + resultado * 86400000).toLocaleDateString('es-ES');
+
+            const fechaInicio = new Date(cuantoParaUSDTDiariosFechaInicio.value);
+            const fechaFinal = new Date(fechaInicio.getTime() + resultado * 86400000);
             
-            agregarClaseVerde([cuantoParaUSDTDiariosDias, cuantoParaUSDTDiariosUSDT, cuantoParaUSDTDiariosFecha]);
+            cuantoParaUSDTDiariosFecha.innerText = fechaFinal.toLocaleDateString('es-ES');
+            
+            agregarClaseVerde([cuantoParaUSDTDiariosDias, cuantoParaUSDTDiariosUSDT, cuantoParaUSDTDiariosFechaInicio, cuantoParaUSDTDiariosFecha]);
         }
     }
+});
+
+cuantoParaUSDTDiariosFechaInicio.addEventListener("change", () => {
+    cuantoParaUSDTDiariosForm.dispatchEvent(new Event('submit', { cancelable: true }));
 });
 
 
