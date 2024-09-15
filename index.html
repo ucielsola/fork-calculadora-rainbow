@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Rainbow 🌈</title>
-    <link rel="stylesheet" href="./css/main.css?v=15.0.0">
+    <link rel="stylesheet" href="./css/main.css?v=16.0.0">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -13,91 +13,99 @@
         <h1>Calculadora Rainbow 🌈</h1>
 
         <section>
-            <h2>Cuánto voy a demorar en llegar a X monto:</h2>
-            <form id="cuanto-demoro">
-                <label>
-                    <p>Ingresá cuánto tenés ahora en Rainbow:</p>
-                    <input enterkeyhint="next" id="cuanto-demoro-tengo" type="text" placeholder="Monto actual">
-                </label>
-                <label>
-                    <p>Ingresá a cuánto querés llegar:</p>
-                    <input enterkeyhint="go" id="cuanto-demoro-quiero-tener" type="text" placeholder="Quiero tener">
-                </label>
-                <label>
-                    <input type="submit" value="Calcular">
-                </label>
-            </form>
-            <div>
-                <p class="vas-a-llegar">Vas a llegar en: <span id="cuanto-demoro-dias">X</span> días.</p>
-                <p>Arrancando el <input type="date" id="cuanto-demoro-fecha-inicio">, esto va a ser el: <span id="cuanto-demoro-fecha">X</span>.</p>
-                <p>Si retirás todo este día, recibirías: <span id="cuanto-demoro-retiro">X</span> USDT. 
-                    <span class="small">(Rainbow gana un 5% de comisión)</span>
-                </p>
+            <h2 class="title">Cuánto voy a demorar en llegar a X monto:</h2>
+            <div class="panel">
+                <form id="cuanto-demoro">
+                    <label>
+                        <p>Ingresá cuánto tenés ahora en Rainbow:</p>
+                        <input enterkeyhint="next" id="cuanto-demoro-tengo" type="text" placeholder="Monto actual">
+                    </label>
+                    <label>
+                        <p>Ingresá a cuánto querés llegar:</p>
+                        <input enterkeyhint="go" id="cuanto-demoro-quiero-tener" type="text" placeholder="Quiero tener">
+                    </label>
+                    <label>
+                        <input type="submit" value="Calcular">
+                    </label>
+                </form>
+                <div>
+                    <p class="vas-a-llegar">Vas a llegar en: <span id="cuanto-demoro-dias">X</span> días.</p>
+                    <p>Arrancando el <input type="date" id="cuanto-demoro-fecha-inicio">, esto va a ser el: <span id="cuanto-demoro-fecha">X</span>.</p>
+                    <p>Si retirás todo este día, recibirías: <span id="cuanto-demoro-retiro">X</span> USDT. 
+                        <span class="small">(Rainbow gana un 5% de comisión)</span>
+                    </p>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2>Cuánto voy a tener en X días:</h2>
-            <form id="cuanto-en-dias">
-                <label>
-                    <p>Ingresá cuánto tenés ahora en Rainbow:</p>
-                    <input enterkeyhint="next" id="cuanto-en-dias-tengo" type="text" placeholder="Monto actual">
-                </label>
-                <label>
-                    <p>Ingresá cuántos días querés operar:</p>
-                    <input enterkeyhint="go" id="cuanto-en-dias-dias-a-operar" type="text" placeholder="Días a operar">
-                </label>
-                <label>
-                    <input type="submit" value="Calcular">
-                </label>
-            </form>
-            <div>
-                <p class="vas-a-llegar">
-                    En <span id="cuanto-en-dias-dias">X</span> días vas a tener: <span id="cuanto-en-dias-usdt">X</span> USDT.
-                </p>
-                <p>Arrancando el <input type="date" id="cuanto-en-dias-fecha-inicio">, esto va a ser el: <span id="cuanto-en-dias-fecha">X</span>.</p>
-                <p>Si retirás todo este día, recibirías: <span id="cuanto-en-dias-retiro">X</span> USDT. 
-                    <span class="small">(Rainbow gana un 5% de comisión)</span>
-                </p>
+            <h2 class="title">Cuánto voy a tener en X días:</h2>
+            <div class="panel">
+                <form id="cuanto-en-dias">
+                    <label>
+                        <p>Ingresá cuánto tenés ahora en Rainbow:</p>
+                        <input enterkeyhint="next" id="cuanto-en-dias-tengo" type="text" placeholder="Monto actual">
+                    </label>
+                    <label>
+                        <p>Ingresá cuántos días querés operar:</p>
+                        <input enterkeyhint="go" id="cuanto-en-dias-dias-a-operar" type="text" placeholder="Días a operar">
+                    </label>
+                    <label>
+                        <input type="submit" value="Calcular">
+                    </label>
+                </form>
+                <div>
+                    <p class="vas-a-llegar">
+                        En <span id="cuanto-en-dias-dias">X</span> días vas a tener: <span id="cuanto-en-dias-usdt">X</span> USDT.
+                    </p>
+                    <p>Arrancando el <input type="date" id="cuanto-en-dias-fecha-inicio">, esto va a ser el: <span id="cuanto-en-dias-fecha">X</span>.</p>
+                    <p>Si retirás todo este día, recibirías: <span id="cuanto-en-dias-retiro">X</span> USDT. 
+                        <span class="small">(Rainbow gana un 5% de comisión)</span>
+                    </p>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2>Cuánto voy a demorar en ganar X USDT diarios:</h2>
-            <form id="cuanto-para-usdt-diarios">
-                <label>
-                    <p>Ingresá cuánto tenés ahora en Rainbow:</p>
-                    <input enterkeyhint="next" id="cuanto-para-usdt-diarios-tengo" type="text" placeholder="Monto actual">
-                </label>
-                <label>
-                    <p>Ingresá cuánto querés ganar diariamente:</p>
-                    <input enterkeyhint="go" id="cuanto-para-usdt-diarios-quiero" type="text" placeholder="Cuánto ganar diariamente">
-                </label>
-                <label>
-                    <input type="submit" value="Calcular">
-                </label>
-            </form>
-            <div>
-                <p class="vas-a-llegar">
-                    Vas a ganar <span id="cuanto-para-usdt-diarios-usdt">X</span> USDT diarios en: <span id="cuanto-para-usdt-diarios-dias">X</span> días.
-                </p>
-                <p>Arrancando el <input type="date" id="cuanto-para-usdt-diarios-fecha-inicio">, esto va a ser el: <span id="cuanto-para-usdt-diarios-fecha">X</span>.</p>
+            <h2 class="title">Cuánto voy a demorar en ganar X USDT diarios:</h2>
+            <div class="panel">
+                <form id="cuanto-para-usdt-diarios">
+                    <label>
+                        <p>Ingresá cuánto tenés ahora en Rainbow:</p>
+                        <input enterkeyhint="next" id="cuanto-para-usdt-diarios-tengo" type="text" placeholder="Monto actual">
+                    </label>
+                    <label>
+                        <p>Ingresá cuánto querés ganar diariamente:</p>
+                        <input enterkeyhint="go" id="cuanto-para-usdt-diarios-quiero" type="text" placeholder="Cuánto ganar diariamente">
+                    </label>
+                    <label>
+                        <input type="submit" value="Calcular">
+                    </label>
+                </form>
+                <div>
+                    <p class="vas-a-llegar">
+                        Vas a ganar <span id="cuanto-para-usdt-diarios-usdt">X</span> USDT diarios en: <span id="cuanto-para-usdt-diarios-dias">X</span> días.
+                    </p>
+                    <p>Arrancando el <input type="date" id="cuanto-para-usdt-diarios-fecha-inicio">, esto va a ser el: <span id="cuanto-para-usdt-diarios-fecha">X</span>.</p>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2>Cuánto necesito tener para ganar X USDT diarios:</h2>
-            <form id="cuanto-necesito-para-usdt-diarios">
-                <label>
-                    <p>Ingresá cuánto querés ganar diariamente:</p>
-                    <input enterkeyhint="go" id="cuanto-necesito-quiero-ganar" type="text" placeholder="Cuánto ganar diariamente">
-                </label>
-                <label>
-                    <input type="submit" value="Calcular">
-                </label>
-            </form>
-            <div>
-                <p class="vas-a-llegar">Para ganar <span id="cuanto-necesito-usdt">X</span> USDT diarios, necesitás tener: <span id="cuanto-necesito-tener">X</span> USDT.</p>
+            <h2 class="title">Cuánto necesito tener para ganar X USDT diarios:</h2>
+            <div class="panel">
+                <form id="cuanto-necesito-para-usdt-diarios">
+                    <label>
+                        <p>Ingresá cuánto querés ganar diariamente:</p>
+                        <input enterkeyhint="go" id="cuanto-necesito-quiero-ganar" type="text" placeholder="Cuánto ganar diariamente">
+                    </label>
+                    <label>
+                        <input type="submit" value="Calcular">
+                    </label>
+                </form>
+                <div>
+                    <p class="vas-a-llegar">Para ganar <span id="cuanto-necesito-usdt">X</span> USDT diarios, necesitás tener: <span id="cuanto-necesito-tener">X</span> USDT.</p>
+                </div>
             </div>
         </section>
         
@@ -117,6 +125,7 @@
         <p>Para consultas, podés escribirme por <a target="_blank" href="https://t.me/carpicoder">Telegram</a>. 📨</p>
     </div>
 
-    <script src="./js/main.js?v=15.0.0"></script>
+    <script src="./js/main.js?v=16.0.0"></script>
+    <script src="./js/accordion.js?v=16.0.0"></script>
 </body>
 </html>
