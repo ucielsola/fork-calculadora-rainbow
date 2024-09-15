@@ -29,9 +29,9 @@ cuantoDemoroForm.addEventListener("submit", (e) => {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
         const resultado = Math.ceil(Math.log(quieroTener / tengo) / Math.log(PORCENTAJE));
-        cuantoDemoroDias.innerText = resultado;
+        cuantoDemoroDias.innerText = resultado.toLocaleString("es-AR");
         cuantoDemoroFecha.innerText = new Date(Date.now() + resultado * 86400000).toLocaleDateString('es-ES');
-        cuantoDemoroRetiro.innerText = (quieroTener - (quieroTener * PORCENTAJE_RETIRO)).toFixed(2);
+        cuantoDemoroRetiro.innerText = Number((quieroTener - (quieroTener * PORCENTAJE_RETIRO)).toFixed(2)).toLocaleString("es-AR");
         
         agregarClaseVerde([cuantoDemoroDias, cuantoDemoroFecha, cuantoDemoroRetiro]);
     }
@@ -58,11 +58,11 @@ cuantoEnDiasForm.addEventListener("submit", (e) => {
     } else if (tengo <= 0 || diasAOperar <= 0) {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
-        cuantoEnDiasDias.innerText = diasAOperar;
-        const resultado = (tengo * Math.pow(PORCENTAJE, diasAOperar)).toFixed(2);
-        cuantoEnDiasUSDT.innerText = resultado;
+        cuantoEnDiasDias.innerText = diasAOperar.toLocaleString("es-AR");
+        const resultado = Number((tengo * Math.pow(PORCENTAJE, diasAOperar)).toFixed(2));
+        cuantoEnDiasUSDT.innerText = resultado.toLocaleString("es-AR");
         cuantoEnDiasFecha.innerText = new Date(Date.now() + diasAOperar * 86400000).toLocaleDateString('es-ES');
-        cuantoEnDiasRetiro.innerText = (resultado - (resultado * PORCENTAJE_RETIRO)).toFixed(2);
+        cuantoEnDiasRetiro.innerText = Number((resultado - (resultado * PORCENTAJE_RETIRO)).toFixed(2)).toLocaleString("es-AR");
 
         agregarClaseVerde([cuantoEnDiasDias, cuantoEnDiasUSDT, cuantoEnDiasFecha, cuantoEnDiasRetiro]);
     }
@@ -88,13 +88,13 @@ cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     } else if (tengo <= 0 || quiero <= 0) {
         alert("Los números no pueden ser negativos ni cero.");
     } else {
-        const resultado = Math.ceil(Math.log(quiero / (tengo * (PORCENTAJE_REAL - 1))) / Math.log(PORCENTAJE));
+        const resultado = Number(Math.ceil(Math.log(quiero / (tengo * (PORCENTAJE_REAL - 1))) / Math.log(PORCENTAJE)));
 
         if (resultado <= 0) {
             alert("Ya estás ganando eso o más.");
         } else {
-            cuantoParaUSDTDiariosDias.innerText = resultado;
-            cuantoParaUSDTDiariosUSDT.innerText = quiero;
+            cuantoParaUSDTDiariosDias.innerText = resultado.toLocaleString("es-AR");
+            cuantoParaUSDTDiariosUSDT.innerText = quiero.toLocaleString("es-AR");
             cuantoParaUSDTDiariosFecha.innerText = new Date(Date.now() + resultado * 86400000).toLocaleDateString('es-ES');
             
             agregarClaseVerde([cuantoParaUSDTDiariosDias, cuantoParaUSDTDiariosUSDT, cuantoParaUSDTDiariosFecha]);
@@ -118,9 +118,9 @@ cuantoNecesitoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     if (isNaN(quieroGanar) || quieroGanar <= 0) {
         alert("Debés ingresar un número mayor que cero.");
     } else {
-        const necesitoTener = (quieroGanar / (PORCENTAJE_REAL - 1)).toFixed(2);
-        cuantoNecesitoUSDT.innerText = quieroGanar;
-        cuantoNecesitoTener.innerText = necesitoTener;
+        const necesitoTener = Number((quieroGanar / (PORCENTAJE_REAL - 1)).toFixed(2));
+        cuantoNecesitoUSDT.innerText = quieroGanar.toLocaleString("es-AR");
+        cuantoNecesitoTener.innerText = necesitoTener.toLocaleString("es-AR");
         
         agregarClaseVerde([cuantoNecesitoUSDT, cuantoNecesitoTener]);
     }
