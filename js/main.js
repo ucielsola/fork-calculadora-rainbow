@@ -2,7 +2,7 @@ const agregarClaseVerde = (elements) => {
     elements.forEach(element => element.classList.add("verde"));
 };
 
-const PORCENTAJE = 1.013457142871;
+const PORCENTAJE = 1.0157;
 const PORCENTAJE_REAL = 1.0157;
 const PORCENTAJE_RETIRO = 0.05;
 
