@@ -116,9 +116,21 @@ p span.small {
 
 .title {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+.title .chevron {
+    font-size: .9rem;
+    font-weight: 800;
+    transition: transform .25s ease-out;
+    margin-right: 1rem;
 }
 
 .panel {
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
 }
