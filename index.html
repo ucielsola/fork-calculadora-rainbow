@@ -4,13 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Rainbow 🌈</title>
-    <link rel="stylesheet" href="./css/main.css?v=17.0.0">
+    <link rel="stylesheet" href="./css/main.css?v=18.0.0">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
 </head>
 <body>
     
     <div class="container">
         <h1>Calculadora Rainbow 🌈</h1>
+
+        <section class="section-evento">
+            <h2 class=""><span>¿Voy a ganar algo en el nuevo evento de 15/9 a 5/10?</span></h2>
+            <div class="">
+                <form id="evento">
+                    <label>
+                        <p>Cuánto tenés en Rainbow:</p>
+                        <input enterkeyhint="next" id="evento-tengo" type="text" placeholder="Monto actual">
+                    </label>
+                    <label>
+                        <p>Cuánto ganás por comisiones por referidos:</p>
+                        <input enterkeyhint="go" id="evento-comisiones" type="text" placeholder="Comisiones diarias">
+                    </label>
+                    <label>
+                        <input type="submit" value="Calcular">
+                    </label>
+                </form>
+                <div>
+                    <p class="vas-a-llegar">Vas a ganar aprox.: <span id="evento-puntos">X</span> puntos.</p>
+                    <p class="vas-a-llegar ganar">¡Vas a ganar <span id="evento-ganar"></span>!</p>
+                    <p class="vas-a-llegar perder">No vas a ganar premio en USDT.</p>
+                    <p>
+                        <b>Sistema de puntos:</b><br>
+                        Con 1000 puntos → 80 USDT<br>
+                        Con 3000 puntos → 300 USDT<br>
+                        Con 5000 puntos → 700 USDT<br>
+                        Con 10000 puntos → 2000 USDT<br>
+                        Con 30000 puntos → 8000 USDT
+                    </p>
+                    <p style="margin-top: .5em;">⚠️ Tené en cuenta que las cuentas no son exactas, si estás cerca de algún premio y este formulario te dice que no vas a ganar, es probable que ganes de todas formas. Al revés lo mismo: puede ser que diga que vas a ganar 80 USDT, y termines cerca pero no ganando. ¡Ojo!</p>
+                </div>
+            </div>
+        </section>
 
         <section>
             <h2 class="title"><span>Cuánto voy a demorar en llegar a X monto:</span><span class="chevron">▼</span></h2>
@@ -125,7 +158,7 @@
         <p>Para consultas, podés escribirme por <a target="_blank" href="https://t.me/carpicoder">Telegram</a>. 📨</p>
     </div>
 
-    <script src="./js/main.js?v=17.0.0"></script>
-    <script src="./js/accordion.js?v=17.0.0"></script>
+    <script src="./js/main.js?v=18.0.0"></script>
+    <script src="./js/accordion.js?v=18.0.0"></script>
 </body>
 </html>

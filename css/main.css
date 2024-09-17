@@ -134,3 +134,28 @@ p span.small {
     overflow: hidden;
     transition: max-height 0.5s ease-out;
 }
+
+
+
+/*
+
+EVENTO
+
+*/
+
+.vas-a-llegar.ganar,
+.vas-a-llegar.perder {
+    display: none;
+}
+
+.section-evento-verde {
+    background-color: rgb(44, 69, 44);
+}
+
+.section-evento-rojo {
+    background-color: rgb(69, 44, 44);
+}
+
+.section-evento-rojo .verde {
+    color: rgb(233, 82, 82);
+}

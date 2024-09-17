@@ -5,6 +5,7 @@ const agregarClaseVerde = (elements) => {
 const PORCENTAJE = 1.0157;
 const PORCENTAJE_REAL = 1.0157;
 const PORCENTAJE_RETIRO = 0.05;
+const today = new Date().toISOString().split('T')[0];
 
 const cuantoDemoroForm = document.querySelector("#cuanto-demoro");
 const cuantoDemoroTengo = document.querySelector("#cuanto-demoro-tengo");
@@ -14,7 +15,6 @@ const cuantoDemoroFecha = document.querySelector("#cuanto-demoro-fecha");
 const cuantoDemoroRetiro = document.querySelector("#cuanto-demoro-retiro");
 const cuantoDemoroFechaInicio = document.querySelector("#cuanto-demoro-fecha-inicio");
 
-const today = new Date().toISOString().split('T')[0];
 cuantoDemoroFechaInicio.value = today;
 
 cuantoDemoroForm.addEventListener("submit", (e) => {
@@ -173,3 +173,69 @@ manejarTeclaSiguiente(cuantoDemoroTengo, cuantoDemoroQuieroTener);
 manejarTeclaSiguiente(cuantoEnDiasTengo, cuantoEnDiasDiasAOperar);
 manejarTeclaSiguiente(cuantoParaUSDTDiariosTengo, cuantoParaUSDTDiariosQuiero);
 manejarTeclaSiguiente(cuantoParaUSDTDiariosQuiero, cuantoNecesitoQuieroGanar);
+
+
+
+const PORCENTAJE_EVENTO = 1.0264;
+const REDUCCION_DIARIA = 0.99;
+
+document.getElementById("evento").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const tengo = Number(document.getElementById("evento-tengo").value.trim());
+    const comisiones = Number(document.getElementById("evento-comisiones").value.trim());
+
+    if (isNaN(tengo) || isNaN(comisiones) || tengo <= 0 || comisiones < 0) {
+        alert("Debés ingresar números válidos en ambos campos.");
+        return;
+    }
+
+    let total = tengo;
+    let gananciaNeta = 0;
+
+    for (let i = 0; i < 21; i++) {
+        const gananciaDiaria = total * (PORCENTAJE_EVENTO - 1);
+        gananciaNeta += gananciaDiaria;
+        total = (total + gananciaDiaria) * REDUCCION_DIARIA;
+    }
+
+    const comisionesTotales = comisiones * 21;
+
+    const totalGanancia = gananciaNeta + comisionesTotales;
+
+    const puntos = Math.floor(totalGanancia * 0.8);
+    
+    document.getElementById("evento-puntos").innerText = puntos;
+
+    let premio = 0;
+    if (puntos >= 30000) {
+        premio = 8000;
+    } else if (puntos >= 10000) {
+        premio = 2000;
+    } else if (puntos >= 5000) {
+        premio = 700;
+    } else if (puntos >= 3000) {
+        premio = 300;
+    } else if (puntos >= 1000) {
+        premio = 80;
+    }
+
+    if (premio > 0) {
+        document.querySelector(".vas-a-llegar.ganar").style.display = 'block';
+        document.getElementById("evento-ganar").innerText = premio + " USDT";
+        document.querySelector(".vas-a-llegar.perder").style.display = 'none';
+        agregarClaseVerde([document.querySelector(".vas-a-llegar.ganar")]);
+
+        document.querySelector(".section-evento").classList.add("section-evento-verde");
+        document.querySelector(".section-evento").classList.remove("section-evento-rojo");
+    } else {
+        document.querySelector(".vas-a-llegar.ganar").style.display = 'none';
+        document.querySelector(".vas-a-llegar.perder").style.display = 'block';
+        agregarClaseVerde([document.querySelector(".vas-a-llegar.perder")]);
+
+        document.querySelector(".section-evento").classList.add("section-evento-rojo");
+        document.querySelector(".section-evento").classList.remove("section-evento-verde");
+    }
+
+    agregarClaseVerde([document.getElementById("evento-puntos")]);
+});
