@@ -5,7 +5,7 @@ const agregarClaseVerde = (elements) => {
 const PORCENTAJE = 1.0157;
 const PORCENTAJE_REAL = 1.0157;
 const PORCENTAJE_RETIRO = 0.05;
-const today = new Date().toISOString().split('T')[0];
+const hoy = new Date().toISOString().split('T')[0];
 
 const cuantoDemoroForm = document.querySelector("#cuanto-demoro");
 const cuantoDemoroTengo = document.querySelector("#cuanto-demoro-tengo");
@@ -15,7 +15,7 @@ const cuantoDemoroFecha = document.querySelector("#cuanto-demoro-fecha");
 const cuantoDemoroRetiro = document.querySelector("#cuanto-demoro-retiro");
 const cuantoDemoroFechaInicio = document.querySelector("#cuanto-demoro-fecha-inicio");
 
-cuantoDemoroFechaInicio.value = today;
+cuantoDemoroFechaInicio.value = hoy;
 
 cuantoDemoroForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -58,7 +58,7 @@ const cuantoEnDiasFecha = document.querySelector("#cuanto-en-dias-fecha");
 const cuantoEnDiasRetiro = document.querySelector("#cuanto-en-dias-retiro");
 const cuantoEnDiasFechaInicio = document.querySelector("#cuanto-en-dias-fecha-inicio");
 
-cuantoEnDiasFechaInicio.value = today;
+cuantoEnDiasFechaInicio.value = hoy;
 
 cuantoEnDiasForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ const cuantoParaUSDTDiariosUSDT = document.querySelector("#cuanto-para-usdt-diar
 const cuantoParaUSDTDiariosFecha = document.querySelector("#cuanto-para-usdt-diarios-fecha");
 const cuantoParaUSDTDiariosFechaInicio = document.querySelector("#cuanto-para-usdt-diarios-fecha-inicio");
 
-cuantoParaUSDTDiariosFechaInicio.value = today;
+cuantoParaUSDTDiariosFechaInicio.value = hoy;
 
 cuantoParaUSDTDiariosForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -178,6 +178,7 @@ manejarTeclaSiguiente(cuantoParaUSDTDiariosQuiero, cuantoNecesitoQuieroGanar);
 
 const PORCENTAJE_EVENTO = 1.0264;
 const REDUCCION_DIARIA = 0.99;
+const PORCENTAJES_PUNTOS = [0.8, 1, 0.6];
 
 document.getElementById("evento").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -192,18 +193,30 @@ document.getElementById("evento").addEventListener("submit", (e) => {
 
     let total = tengo;
     let gananciaNeta = 0;
+    let puntosTotales = 0;
 
     for (let i = 0; i < 21; i++) {
         const gananciaDiaria = total * (PORCENTAJE_EVENTO - 1);
+        
         gananciaNeta += gananciaDiaria;
+        
         total = (total + gananciaDiaria) * REDUCCION_DIARIA;
+        
+        let porcentajePuntos;
+        if (i < 7) {
+            porcentajePuntos = PORCENTAJES_PUNTOS[0];
+        } else if (i < 14) {
+            porcentajePuntos = PORCENTAJES_PUNTOS[1];
+        } else {
+            porcentajePuntos = PORCENTAJES_PUNTOS[2];
+        }
+
+        puntosTotales += gananciaDiaria * porcentajePuntos;
     }
 
     const comisionesTotales = comisiones * 21;
-
-    const totalGanancia = gananciaNeta + comisionesTotales;
-
-    const puntos = Math.floor(totalGanancia * 0.8);
+    puntosTotales += comisionesTotales * 0.8;
+    const puntos = Math.floor(puntosTotales);
     
     document.getElementById("evento-puntos").innerText = puntos;
 
