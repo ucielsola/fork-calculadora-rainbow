@@ -175,7 +175,7 @@ manejarTeclaSiguiente(cuantoParaUSDTDiariosTengo, cuantoParaUSDTDiariosQuiero);
 manejarTeclaSiguiente(cuantoParaUSDTDiariosQuiero, cuantoNecesitoQuieroGanar);
 
 
-
+/*
 const PORCENTAJE_EVENTO = 1.0264;
 const REDUCCION_DIARIA = 0.99;
 const PORCENTAJES_PUNTOS = [0.8, 1, 0.6];
@@ -251,4 +251,4 @@ document.getElementById("evento").addEventListener("submit", (e) => {
     }
 
     agregarClaseVerde([document.getElementById("evento-puntos")]);
-});
+});*/
